@@ -13,14 +13,21 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var qouteLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var refreshIndicator: RefreshIndicator!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        refreshIndicator.isHidden = false
+        refreshIndicator.activityIndicator.startAnimating()
         manager.onCompletion = { [weak self] quote in
-            guard let self = self else { return }
-            self.updateInterface(quote: quote)
-            self.setUpImage(quote: quote)
+            DispatchQueue.main.async {
+                guard let self = self else { return }
+                self.updateInterface(quote: quote)
+                self.setUpImage(quote: quote)
+                self.refreshIndicator.isHidden = true
+                self.refreshIndicator.activityIndicator.stopAnimating()
+            }
+            
         }
         manager.fetchQuote()
         
@@ -34,7 +41,7 @@ class ViewController: UIViewController {
     }
     
     func setUpImage(quote: Quote) {
-        quote.image.stringToImage { image in
+        manager.stringToImage(url: quote.image) { image in
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
                 self.imageView.image = image
@@ -43,12 +50,14 @@ class ViewController: UIViewController {
     }
     
     @IBAction func refreshButtonTapped(_ sender: Any) {
-        manager.onCompletion = { [weak self] quote in
-            self?.updateInterface(quote: quote)
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.manager.fetchQuote()
+            self.refreshIndicator.isHidden = false
+            self.refreshIndicator.activityIndicator.startAnimating()
         }
-        manager.fetchQuote()
+        
     }
-    
 
 }
 

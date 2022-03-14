@@ -39,4 +39,15 @@ class NetworkManager {
         }
         return nil
     }
+    
+    func stringToImage(url: String, handler: @escaping ((UIImage?)->())) {
+        if let url = URL(string: url) {
+            URLSession.shared.dataTask(with: url) { (data, response, error) in
+                if let data = data {
+                    let image = UIImage(data: data)
+                    handler(image)
+                }
+            }.resume()
+        }
+    }
 }

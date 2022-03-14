@@ -37,17 +37,25 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="252" verticalHuggingPriority="252" translatesAutoresizingMaskIntoConstraints="NO" id="Jwy-aG-rnc">
                                 <rect key="frame" x="20" y="100" width="335" height="144.5"/>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="15P-Fo-vBn" customClass="RefreshIndicator" customModule="ChuckNorrisAPI" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" white="1" alpha="0.74803394039735094" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Jwy-aG-rnc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="26S-el-EjO"/>
+                            <constraint firstItem="15P-Fo-vBn" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="55j-LL-jnI"/>
                             <constraint firstItem="Ibc-b5-0Ok" firstAttribute="top" secondItem="Jwy-aG-rnc" secondAttribute="bottom" constant="100" id="K66-i2-jqx"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Q4h-w2-Swa" secondAttribute="bottom" constant="180" id="OWQ-TC-HeJ"/>
                             <constraint firstItem="Jwy-aG-rnc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="PO3-Ql-Ui5"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Ibc-b5-0Ok" secondAttribute="trailing" constant="20" id="VEF-TL-yRh"/>
+                            <constraint firstItem="15P-Fo-vBn" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="X55-Jx-bA0"/>
+                            <constraint firstAttribute="trailing" secondItem="15P-Fo-vBn" secondAttribute="trailing" id="fQh-PO-S5R"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Jwy-aG-rnc" secondAttribute="trailing" constant="20" id="h32-re-kkZ"/>
                             <constraint firstItem="Ibc-b5-0Ok" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="kY5-RS-42f"/>
+                            <constraint firstAttribute="bottom" secondItem="15P-Fo-vBn" secondAttribute="bottom" id="lwx-up-dth"/>
                             <constraint firstItem="Q4h-w2-Swa" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="tKj-ua-k2j"/>
                             <constraint firstItem="Q4h-w2-Swa" firstAttribute="top" secondItem="Ibc-b5-0Ok" secondAttribute="bottom" constant="107" id="uEt-hU-kzy"/>
                         </constraints>
@@ -55,6 +63,7 @@
                     <connections>
                         <outlet property="imageView" destination="Jwy-aG-rnc" id="Ew5-ER-IYV"/>
                         <outlet property="qouteLabel" destination="Ibc-b5-0Ok" id="IlT-fN-Rfp"/>
+                        <outlet property="refreshIndicator" destination="15P-Fo-vBn" id="nze-ag-In2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
