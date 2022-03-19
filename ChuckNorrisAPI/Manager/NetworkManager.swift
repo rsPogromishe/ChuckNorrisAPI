@@ -12,6 +12,7 @@ class NetworkManager {
     
     var onCompletion: ((Quote) -> Void)?
     
+    #warning("Если произойдёт ошибка запроса, неверный урл, неверный запрос, не доступность сервера, ошибка парсера, в контроллер никак это не прокидывается, для, например, вывода сообщения об ошибке")
     func fetchQuote() {
         let urlString = "https://api.chucknorris.io/jokes/random"
         guard let url = URL(string: urlString) else { return }
