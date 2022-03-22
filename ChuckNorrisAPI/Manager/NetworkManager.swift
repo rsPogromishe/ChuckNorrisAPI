@@ -11,20 +11,21 @@ import UIKit
 class NetworkManager {
     
     var onCompletion: ((Quote) -> Void)?
+    var onError: ((String) -> Void)?
     
-    #warning("Если произойдёт ошибка запроса, неверный урл, неверный запрос, не доступность сервера, ошибка парсера, в контроллер никак это не прокидывается, для, например, вывода сообщения об ошибке")
+    //#warning("Если произойдёт ошибка запроса, неверный урл, неверный запрос, не доступность сервера, ошибка парсера, в контроллер никак это не прокидывается, для, например, вывода сообщения об ошибке")
     func fetchQuote() {
         let urlString = "https://api.chucknorris.io/jokes/random"
         guard let url = URL(string: urlString) else { return }
-        let session = URLSession(configuration: .default)
-        let task = session.dataTask(with: url) { data, response, error in
+        URLSession.shared.dataTask(with: url) { data, response, error in
             if let data = data {
                 if let quote = self.parseJSON(withData: data) {
                     self.onCompletion?(quote)
                 }
+            } else if let error = error {
+                self.onError?(error.localizedDescription)
             }
-        }
-        task.resume()
+        }.resume()
     }
     
     func parseJSON(withData data: Data) -> Quote? {

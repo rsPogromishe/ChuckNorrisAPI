@@ -33,4 +33,13 @@ class RefreshIndicator: UIView {
         contentView.frame = bounds
     }
     
+    func startAnimation() {
+        contentView.isHidden = false
+        activityIndicator.startAnimating()
+    }
+    
+    func stopAnimation() {
+        contentView.isHidden = true
+        activityIndicator.stopAnimating()
+    }
 }
