@@ -10,6 +10,8 @@ import UIKit
 
 class RefreshIndicator: UIView {
     
+    static var refreshIndicatorView: UIView?
+    
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
@@ -33,13 +35,16 @@ class RefreshIndicator: UIView {
         contentView.frame = bounds
     }
     
-    func startAnimation() {
-        contentView.isHidden = false
-        activityIndicator.startAnimating()
+    class func startAnimation(mainView: UIView) {
+        let inView = RefreshIndicator()
+        inView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        mainView.addSubview(inView)
+        inView.isHidden = false
+        inView.activityIndicator.startAnimating()
+        self.refreshIndicatorView = inView
     }
     
-    func stopAnimation() {
-        contentView.isHidden = true
-        activityIndicator.stopAnimating()
+    class func stopAnimation() {
+        refreshIndicatorView?.removeFromSuperview()
     }
 }
