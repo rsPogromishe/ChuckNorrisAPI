@@ -5,7 +5,6 @@
 //  Created by Снытин Ростислав on 13.03.2022.
 //
 
-import Foundation
 import UIKit
 
 struct QuoteData: Codable {

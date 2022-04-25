@@ -5,7 +5,6 @@
 //  Created by Снытин Ростислав on 13.03.2022.
 //
 
-import Foundation
 import UIKit
 
 enum Response {
@@ -17,7 +16,6 @@ class NetworkManager {
     
     var onCompletion: ((Response) -> Void)?
     
-    //#warning("Если произойдёт ошибка запроса, неверный урл, неверный запрос, не доступность сервера, ошибка парсера, в контроллер никак это не прокидывается, для, например, вывода сообщения об ошибке")
     func fetchQuote() {
         let urlString = "https://api.chucknorris.io/jokes/random"
         guard let url = URL(string: urlString) else { return }

@@ -46,5 +46,6 @@ class RefreshIndicator: UIView {
     
     class func stopAnimation() {
         refreshIndicatorView?.removeFromSuperview()
+        refreshIndicatorView = nil
     }
 }
