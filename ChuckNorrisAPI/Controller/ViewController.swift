@@ -17,8 +17,6 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //#warning("Этот блок кода можно запихнуть в один метод RefreshIndicator, сделай его добавлемым по необходимости, чтобы на каждый контроллер не ставить вью с загрузкой, а добавлять его кодом, когда он станет необходим")
-        // Блок кода
         
         manager.onCompletion = { [weak self] Response in
             guard let self = self else { return }
